@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 1%;
+    letter-spacing: 1px;
+}
+
+nav a {
+    display: block;
+    padding: 10px;
+}
+nav a.active {
+    color: rgba(0, 194, 184, 0.904);
+    background-color: black;
+}
+.lg-link {
+    font-size: 40px;
+    text-decoration: underline;
+}
+
+.form-login {
+    margin-top: 10%;
+}
+
+.form-login input {
+    height: 45px;
+    margin-top: 5px;
+}
+
+.form-login .checkbox input {
+    height: 20px;
+    width: 20px;
+}
