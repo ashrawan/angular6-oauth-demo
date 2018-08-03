@@ -1,0 +1,33 @@
+<div class="container">
+  <div *ngIf="createUserError" class="alert alert-danger">{{address_form_error}}</div>
+    <form #addressForm="ngForm" (ngSubmit)="submitForm(addressForm)" class="mx-auto col-md-4 offset-md-4 form-login">
+      <!-- {{ userForm.value | json }} -->
+  
+      <!-- {{userForm.value.username}} -->
+      <h4 class="text-center mb-2"> {{ view_address_heading }} </h4>
+
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" name="district" class="form-control" placeholder="District" ngModel autofocus minlength="2"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" name="city" class="form-control" placeholder="City" ngModel autofocus minlength="2"/>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <select class="custom-select" name="address_type" ngModel>
+          <option selected value="PARMANENT">Parmanent</option>
+          <option value="TEMPORARY">Temporary</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary btn-lg btn-block mt-3" type="submit" [disabled]="addressForm.invalid">Add Address</button>
+  
+      <p class="mt-3 mb-3 text-muted text-center">© 2018</p>
+    </form>
+  
+  </div>

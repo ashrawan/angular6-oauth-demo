@@ -26,4 +26,7 @@
   <div *ngIf="!_auth.isLoggedIn()" class="float-right">
     <a routerLink="/login" routerLinkActive="active">Login</a>
   </div>
+  <div *ngIf="!_auth.isLoggedIn()" class="float-right">
+      <a routerLink="/register" routerLinkActive="active">Registration</a>
+    </div>
 </nav>
