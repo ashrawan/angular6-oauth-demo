@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 // import 'rxjs/add/observable/throw';
 
@@ -14,7 +15,8 @@ export class UserService {
   private _url: string = "http://localhost:8080/api";
 
   errorHandler(error: HttpErrorResponse){
-    return Observable.throw(error.message || "Server Error");
+    console.log("User api error ", error);
+    return Observable.throw(error); 
   }
 
   // Demo App API
@@ -29,11 +31,13 @@ export class UserService {
   }
 
   createUser(userData): Observable<User[]> {
-    return this.http.post<any>(this._url+"/user", userData);
+    return this.http.post<any>(this._url+"/users", userData)
+      .catch(this.errorHandler);
   }
 
   updateUser(userData, id): Observable<User[]> {
-    return this.http.put<any>(this._url+"/rest/users"+id, userData);
+    return this.http.put<any>(this._url+"/rest/users"+id, userData)
+      .catch(this.errorHandler);
   }
 
 }

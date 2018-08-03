@@ -37,15 +37,7 @@ export class AuthService {
       "grant_type": "password"
     }
 
-    return this.http.post<any>(this._loginUrl, this.getFormUrlEncoded(data), { headers: this.tokenHeader })
-      .subscribe(res => {
-        console.log("Token reterive successful", res)
-        localStorage.setItem("token", res.access_token)
-        localStorage.setItem("refreshToken", res.refresh_token)
-        this._router.navigate(['/user'])
-      },
-        err => console.log(err));
-
+    return this.http.post<any>(this._loginUrl, this.getFormUrlEncoded(data), { headers: this.tokenHeader });
   }
 
   refreshToken(){
@@ -77,6 +69,7 @@ export class AuthService {
   logout() {
     console.log("Logged Out called");
     localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
     this._router.navigate(['/login'])
   }
 

@@ -17,6 +17,9 @@ import { UserListComponent } from './component/user-list/user-list.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { LoginComponent } from './component/login/login.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
+import { CreateUserFormComponent } from './component/create-user-form/create-user-form.component';
+import { AddressComponent } from './component/address/address.component';
+import { RegisterComponent } from './component/register/register.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { NavigationComponent } from './component/navigation/navigation.component
     LoginComponent,
     UserListComponent,
     NavigationComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CreateUserFormComponent,
+    AddressComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
