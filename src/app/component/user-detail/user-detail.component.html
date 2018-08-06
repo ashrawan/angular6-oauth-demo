@@ -1,3 +1,31 @@
-<p>
-  user-detail works!
-</p>
+<div class="container mt-3">
+
+  <button class="btn btn-primary float-right" (click)="newAddress()">Add Address</button>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <div *ngIf="!!error_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{error_msg}}</div>
+
+
+      <ul>
+        <li *ngFor="let address of addresss" class="list-group-item mt-2" [class.selected]="address === selectedAddress" (click)="onSelect(address)">
+          <p>ID- {{address.id}}</p>
+          <p>District - {{address.district}}</p>
+          <p>City - {{address.city}}</p>
+          <p>Address Type - {{address.addressType}}</p>
+          <button class="btn btn-danger" (click)="deleteAddress(address.id)">Delete Address</button>
+        </li>
+      </ul>
+
+
+    </div>
+
+    <div class="col-md-6">
+      <app-address *ngIf="!addForm" [address]="selectedAddress"></app-address>
+      <app-add-address *ngIf="addForm"></app-add-address>
+    </div>
+
+  </div>
+
+</div>

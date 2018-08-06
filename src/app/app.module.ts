@@ -17,9 +17,10 @@ import { UserListComponent } from './component/user-list/user-list.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { LoginComponent } from './component/login/login.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
-import { CreateUserFormComponent } from './component/create-user-form/create-user-form.component';
 import { AddressComponent } from './component/address/address.component';
 import { RegisterComponent } from './component/register/register.component';
+import { AddressService } from './services/address.service';
+import { AddAddressComponent } from './component/add-address/add-address.component';
 
 
 @NgModule({
@@ -32,9 +33,9 @@ import { RegisterComponent } from './component/register/register.component';
     UserListComponent,
     NavigationComponent,
     NotFoundComponent,
-    CreateUserFormComponent,
     AddressComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddAddressComponent
   ],
   imports: [
     BrowserModule,
@@ -42,13 +43,13 @@ import { RegisterComponent } from './component/register/register.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService, AuthGuard, AuthService,
+  providers: [UserService, AddressService, AuthGuard, AuthService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: HttpInterceptorService,
     multi: true
   }
 ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] 
 })
 export class AppModule { }

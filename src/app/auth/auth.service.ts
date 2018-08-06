@@ -42,6 +42,8 @@ export class AuthService {
 
   refreshToken(){
 
+    console.log("refresh token called");
+
     let data = {
       "grant_type": "refresh_token",
       "refresh_token": localStorage.getItem("refreshToken")
@@ -53,9 +55,10 @@ export class AuthService {
         console.log("Token retrieve successful", res)
         localStorage.setItem("token", res.access_token)
         localStorage.setItem("refreshToken", res.refresh_token)
-        this._router.navigate(['/user'])
+        return true;
+        // this._router.navigate(['/user'])
       },
-        err => console.log(err));
+        err => {console.log(err); this.logout()});
     }
   }
 

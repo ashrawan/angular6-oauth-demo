@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AddressService } from '../../services/address.service';
+import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { Address } from '../../model/address';
 
 @Component({
   selector: 'app-address',
@@ -8,11 +10,24 @@ import { AddressService } from '../../services/address.service';
 })
 export class AddressComponent implements OnInit {
 
-  private view_address_heading: string;
+  @Input("address") public address: Address;
 
-  constructor(private _addressService: AddressService) { }
+  all_address_type = ['PERMANENT', 'TEMPORARY'];
+ 
+  private address_msg: string;
+  private has_error = false;
+  
+  private userId;
+  private data;
+  
+  constructor(private _addressService: AddressService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    console.log("addressData ", this.address);
+
+    this.userId = this.route.snapshot.paramMap.get('id');
+  
   }
 
   submitForm(addressForm){
@@ -20,9 +35,24 @@ export class AddressComponent implements OnInit {
     let city = addressForm.value.city;
     let address_type = addressForm.value.address_type;
 
-    console.log(addressForm.value);
+    // this.data = {
+    //   "district": district,
+    //   "city": city,
+    //   "address_type": address_type,
+    //   "status": 1,
+    //   "user": {  
+    //     "id": this.userId 
+    //   }
+    // }
 
-    this._addressService.createAddress(addressForm)
+    // console.log(this.data);
+    console.log("addressData ", this.address);
+
+    console.log("address form ", addressForm.value);
+    this._addressService.updateAddress(addressForm.value, this.address.id).subscribe(
+      res => { console.log(res); this.address_msg = "Update Successful" },
+      err => { console.log(err); this.address_msg = "Update Failed"}
+    )
 
   }
 

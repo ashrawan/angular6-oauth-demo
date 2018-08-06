@@ -19,8 +19,7 @@ const routes: Routes = [
   { path: 'user', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'user/details/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
   { path: 'user/address', component: AddressComponent, canActivate: [AuthGuard] },
-  {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'}
+  {path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
